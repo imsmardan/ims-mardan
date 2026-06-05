@@ -94,7 +94,7 @@ export default function HeroSection() {
       </AnimatePresence>
 
       {/* Content */}
-      <div className="relative z-10 h-full flex flex-col justify-center pt-24 sm:pt-28">
+      <div className="relative z-10 h-full flex flex-col justify-center pt-16 sm:pt-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <AnimatePresence mode="wait">
             <motion.div
@@ -158,30 +158,30 @@ export default function HeroSection() {
         </div>
       </div>
 
-      {/* Arrow Navigation */}
+      {/* Arrow Navigation — centered vertically on desktop, near bottom on mobile */}
       <button
         onClick={prev}
-        className="absolute left-4 sm:left-6 top-1/2 -translate-y-1/2 z-10 bg-white/20 hover:bg-white/40 backdrop-blur-sm text-white p-3 rounded-full transition-all shadow-lg"
+        className="absolute left-3 sm:left-6 bottom-24 sm:bottom-auto sm:top-1/2 sm:-translate-y-1/2 z-10 bg-white/25 hover:bg-white/50 backdrop-blur-sm text-white p-2.5 sm:p-3 rounded-full transition-all shadow-lg"
         aria-label="Previous slide"
       >
-        <FiChevronLeft size={20} />
+        <FiChevronLeft size={18} />
       </button>
       <button
         onClick={next}
-        className="absolute right-4 sm:right-6 top-1/2 -translate-y-1/2 z-10 bg-white/20 hover:bg-white/40 backdrop-blur-sm text-white p-3 rounded-full transition-all shadow-lg"
+        className="absolute right-3 sm:right-6 bottom-24 sm:bottom-auto sm:top-1/2 sm:-translate-y-1/2 z-10 bg-white/25 hover:bg-white/50 backdrop-blur-sm text-white p-2.5 sm:p-3 rounded-full transition-all shadow-lg"
         aria-label="Next slide"
       >
-        <FiChevronRight size={20} />
+        <FiChevronRight size={18} />
       </button>
 
-      {/* Dot Navigation — sits above stats bar */}
-      <div className="absolute bottom-[88px] sm:bottom-[80px] left-1/2 -translate-x-1/2 z-10 flex gap-2 items-center">
+      {/* Dot Navigation — centered between arrows, above stats bar */}
+      <div className="absolute bottom-[92px] sm:bottom-[84px] left-1/2 -translate-x-1/2 z-10 flex gap-2 items-center">
         {slides.map((_, i) => (
           <button
             key={i}
             onClick={() => setCurrent(i)}
             className={`rounded-full transition-all duration-300 ${
-              i === current ? "w-8 h-2.5 bg-white" : "w-2.5 h-2.5 bg-white/50"
+              i === current ? "w-7 h-2 bg-white" : "w-2 h-2 bg-white/50"
             }`}
             aria-label={`Go to slide ${i + 1}`}
           />
