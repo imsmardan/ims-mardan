@@ -33,7 +33,9 @@ export default function Header() {
   const pathname = usePathname();
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
+    const handleScroll = () => setScrolled(window.scrollY > 10);
+    // Check on mount too
+    handleScroll();
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -48,7 +50,7 @@ export default function Header() {
       className={`w-full transition-all duration-300 ${
         scrolled
           ? "bg-[#1B3A7A] shadow-lg"
-          : "bg-black/20 backdrop-blur-sm"
+          : "bg-[#1B3A7A]/80 sm:bg-black/20 sm:backdrop-blur-sm"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

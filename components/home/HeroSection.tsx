@@ -142,11 +142,24 @@ export default function HeroSection() {
 
       {/* Stats Bar */}
       <div className="absolute bottom-0 left-0 right-0 z-10 bg-[#1B3A7A]/90 backdrop-blur-sm">
+        {/* Dot nav space on mobile */}
+        <div className="h-8 sm:hidden flex items-center justify-center gap-2">
+          {slides.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setCurrent(i)}
+              className={`rounded-full transition-all duration-300 ${
+                i === current ? "w-6 h-2 bg-white" : "w-2 h-2 bg-white/50"
+              }`}
+              aria-label={`Go to slide ${i + 1}`}
+            />
+          ))}
+        </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 sm:grid-cols-4 divide-x divide-white/20">
             {stats.map((stat) => (
-              <div key={stat.label} className="py-4 px-4 text-center">
-                <p className="font-playfair font-bold text-xl sm:text-2xl text-[#A8C4E0]">
+              <div key={stat.label} className="py-3 sm:py-4 px-4 text-center">
+                <p className="font-playfair font-bold text-lg sm:text-2xl text-[#A8C4E0]">
                   {stat.value}
                 </p>
                 <p className="text-white/70 text-xs sm:text-sm mt-0.5">
@@ -158,30 +171,30 @@ export default function HeroSection() {
         </div>
       </div>
 
-      {/* Arrow Navigation — centered vertically on desktop, near bottom on mobile */}
+      {/* Arrow Navigation — always vertically centered in hero image area */}
       <button
         onClick={prev}
-        className="absolute left-3 sm:left-6 bottom-24 sm:bottom-auto sm:top-1/2 sm:-translate-y-1/2 z-10 bg-white/25 hover:bg-white/50 backdrop-blur-sm text-white p-2.5 sm:p-3 rounded-full transition-all shadow-lg"
+        className="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 z-10 bg-black/30 hover:bg-black/50 backdrop-blur-sm text-white p-2 sm:p-3 rounded-full transition-all shadow-lg border border-white/20"
         aria-label="Previous slide"
       >
-        <FiChevronLeft size={18} />
+        <FiChevronLeft size={16} />
       </button>
       <button
         onClick={next}
-        className="absolute right-3 sm:right-6 bottom-24 sm:bottom-auto sm:top-1/2 sm:-translate-y-1/2 z-10 bg-white/25 hover:bg-white/50 backdrop-blur-sm text-white p-2.5 sm:p-3 rounded-full transition-all shadow-lg"
+        className="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 z-10 bg-black/30 hover:bg-black/50 backdrop-blur-sm text-white p-2 sm:p-3 rounded-full transition-all shadow-lg border border-white/20"
         aria-label="Next slide"
       >
-        <FiChevronRight size={18} />
+        <FiChevronRight size={16} />
       </button>
 
-      {/* Dot Navigation — centered between arrows, above stats bar */}
-      <div className="absolute bottom-[92px] sm:bottom-[84px] left-1/2 -translate-x-1/2 z-10 flex gap-2 items-center">
+      {/* Dot Navigation — desktop only (mobile dots are inside stats bar) */}
+      <div className="hidden sm:flex absolute bottom-[80px] left-1/2 -translate-x-1/2 z-10 gap-2 items-center">
         {slides.map((_, i) => (
           <button
             key={i}
             onClick={() => setCurrent(i)}
             className={`rounded-full transition-all duration-300 ${
-              i === current ? "w-7 h-2 bg-white" : "w-2 h-2 bg-white/50"
+              i === current ? "w-6 h-2 bg-white" : "w-2 h-2 bg-white/50"
             }`}
             aria-label={`Go to slide ${i + 1}`}
           />
